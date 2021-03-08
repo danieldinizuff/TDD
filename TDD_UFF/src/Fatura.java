@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Fatura {
 	
@@ -6,12 +8,14 @@ public class Fatura {
 	private float valor;
 	private String nomeCliente;
 	private char paga;
-	private Pagamento pagamento;
+	private List<Pagamento> pagamentos;
 	
 	public Fatura(Date data, float valor, String nomeCliente) {
 		this.data = data;
 		this.valor = valor;
 		this.nomeCliente = nomeCliente;
+		this.pagamentos = new ArrayList<Pagamento>();
+		this.paga = ' ';
 	}
 	
 	public float getValor() {
@@ -26,11 +30,11 @@ public class Fatura {
 		return this.paga;
 	}
 	
-	public void setPagamento(Pagamento pagamento) {
-		this.pagamento = pagamento;
+	public void addPagamento(Pagamento pagamento) {
+		pagamentos.add(pagamento);
 	}
 	
-	public Pagamento getPagamento() {
-		return this.pagamento;
+	public List<Pagamento> getPagamentos() {
+		return this.pagamentos;
 	}
 }
