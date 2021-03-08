@@ -55,4 +55,17 @@ public class ProcessadorBoletosTest {
 		Assertions.assertEquals(' ', fatura.getPaga());
 	}
 	
+	@Test
+	public void testAssociaPagamentosFaturaPaga() {
+		Fatura fatura = new Fatura(new Date(), 500, "Daniel");
+		List<Boleto> listaBoletos = new ArrayList<Boleto>();
+		listaBoletos.add(new Boleto("12345", new Date(), 400));
+		listaBoletos.add(new Boleto("12346", new Date(), 20));
+		listaBoletos.add(new Boleto("12347", new Date(), 50));
+		listaBoletos.add(new Boleto("12347", new Date(), 30));
+		proc.pagar(fatura, listaBoletos);
+		Assertions.assertTrue(4 == fatura.getPagamentos().size());
+		Assertions.assertEquals('X', fatura.getPaga());
+	}
+	
 }
