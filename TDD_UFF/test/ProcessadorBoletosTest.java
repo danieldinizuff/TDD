@@ -18,11 +18,23 @@ public class ProcessadorBoletosTest {
 	@Test
 	public void testFaturaPaga() {
 		
-		Fatura fatura = new Fatura(new Date(), 1500, "Daniel");
+		Fatura fatura = new Fatura(new Date(), 500, "Daniel");
 		List<Boleto> listaBoletos = new ArrayList<Boleto>();
 		listaBoletos.add(new Boleto("12345", new Date(), 500));
 		Assertions.assertEquals("PAGA", proc.pagar(fatura, listaBoletos));
+		System.out.println("Test paga: " + fatura.getPaga());
+	}
+	
+	@Test
+	public void testFaturaNaoPaga() {
 		
+		Fatura fatura = new Fatura(new Date(), 500, "Daniel");
+		List<Boleto> listaBoletos = new ArrayList<Boleto>();
+		listaBoletos.add(new Boleto("12345", new Date(), 400));
+		listaBoletos.add(new Boleto("12346", new Date(), 20));
+		listaBoletos.add(new Boleto("12347", new Date(), 50));
+		Assertions.assertEquals("NÃO PAGA", proc.pagar(fatura, listaBoletos));
+		System.out.println("Test não paga: " + fatura.getPaga());
 	}
 	
 }
