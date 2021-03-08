@@ -37,4 +37,12 @@ public class ProcessadorBoletosTest {
 		System.out.println("Test não paga: " + fatura.getPaga());
 	}
 	
+	@Test
+	public void testAssociaPagamento() {
+		Fatura fatura = new Fatura(new Date(), 500, "Daniel");
+		Pagamento pagamento = new Pagamento(100, new Date(), Pagamento.TipoPagamento.BOLETO);
+		fatura.setPagamento(pagamento);
+		Assertions.assertNotNull(fatura.getPagamento());
+	}
+	
 }

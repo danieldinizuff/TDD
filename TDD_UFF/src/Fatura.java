@@ -6,6 +6,7 @@ public class Fatura {
 	private float valor;
 	private String nomeCliente;
 	private char paga;
+	private Pagamento pagamento;
 	
 	public Fatura(Date data, float valor, String nomeCliente) {
 		this.data = data;
@@ -23,5 +24,13 @@ public class Fatura {
 	
 	public char getPaga() {
 		return this.paga;
+	}
+	
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+	
+	public Pagamento getPagamento() {
+		return this.pagamento;
 	}
 }
